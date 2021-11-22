@@ -1,0 +1,6 @@
+incompressibleThreePhaseMixture/incompressibleThreePhaseMixture.C
+threePhaseInterfaceProperties/threePhaseInterfaceProperties.C
+immiscibleIncompressibleThreePhaseMixture/immiscibleIncompressibleThreePhaseMixture.C
+interDebrisFoam.C
+
+EXE = $(FOAM_USER_APPBIN)/interDebrisFoam

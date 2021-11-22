@@ -1,0 +1,4 @@
+HerschelBulkleyPapanastasiou/HerschelBulkleyPapanastasiou.C
+PudasainiCoulombViscoPlastic/PudasainiCoulombViscoPlastic.C
+
+LIB = $(FOAM_USER_LIBBIN)/libviscosityModelsadd

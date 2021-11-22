@@ -1,0 +1,77 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      transportProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+phases (air slurry debris);
+
+air
+{
+    transportModel  Newtonian;
+    nu              1.48e-05;
+    rho             1.2;
+}
+
+
+slurry
+{
+    transportModel  HerschelBulkleyPapanastasiou;
+    HerschelBulkleyPapanastasiouCoeffs
+    {
+	    k               8.86;                           
+	    n               1;
+	    tau0            26.58;
+	    m               20;//can be modified
+   }
+    nu               0.01;
+    rho             1900;
+}
+
+
+
+debris
+{
+   transportModel  PudasainiCoulombViscoPlastic;
+   PudasainiCoulombViscoPlasticCoeffs
+	{ 
+		delta           0.5236;//rad of the friction angle
+		rhoS            2500; 
+		nuMin           1.e-5;
+		nu0             2; 
+		my	            1.0;
+	}
+   nu              0.05; 
+   rho             2500;
+}
+
+// Surface tension coefficients
+sigma12         0.07;
+sigma13         0.07;
+sigma           0;
+// Diffusivity between miscible phases
+D23             3e-09;
+
+relativeVelocityModel simple;
+
+"(simple|general)Coeffs"
+{
+    V0              (0 -0.5 0);
+    a               0.5;
+    g               (0 -9.81 0);
+    residualAlpha   0;
+    d               0.001;
+}
+
+// ************************************************************************* //
